@@ -50,7 +50,7 @@ const RowContainer = ({ flag, data, scrollValue }) => {
               >
                 <img
                   src={item?.imageURL}
-                  alt=""
+                  alt={item?.imageURL}
                   className="w-full h-full object-contain"
                 />
               </motion.div>
@@ -80,7 +80,7 @@ const RowContainer = ({ flag, data, scrollValue }) => {
         ))
       ) : (
         <div className="w-full flex flex-col items-center justify-center">
-          <img src={NotFound} className="h-340" />
+          <img src={NotFound} className="h-340" alt="notfound"/>
           <p className="text-xl text-headingColor font-semibold my-2">
             Items Not Available
           </p>
