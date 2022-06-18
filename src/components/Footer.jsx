@@ -18,14 +18,7 @@ function Footer() {
         </div>
         <div className="footer-bottom">
             <p>copyright &copy;2022 <a href="#">FoodStore</a>  </p>
-                    <div className="footer-menu">
-                      <ul className="f-menu">
-                        <li><a href="">Home</a></li>
-                        <li><a href="">About</a></li>
-                        <li><a href="">Contact</a></li>
-                        <li><a href="">Service</a></li>
-                      </ul>
-                    </div>
+                    
         </div>
 
     </footer>

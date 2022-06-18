@@ -51,7 +51,7 @@ const RowContainer = ({ flag, data, scrollValue }) => {
                 <img
                   src={item?.imageURL}
                   alt={item?.imageURL}
-                  className="w-full h-full object-contain"
+                  className="w-full h-28 object-contain"
                 />
               </motion.div>
               <motion.div
