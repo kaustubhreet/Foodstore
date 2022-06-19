@@ -6,7 +6,7 @@ import { useStateValue } from "./context/StateProvider";
 import { getAllFoodItems } from "./utils/firebaseFunctions";
 import { actionType } from "./context/reducer";
 import About from "./components/About";
-import Errorpage from './components/Errorpage
+import Errorpage from './components/Errorpage';
 
 const App = () => {
   const [{ foodItems }, dispatch] = useStateValue();
