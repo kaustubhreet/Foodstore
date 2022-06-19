@@ -31,7 +31,7 @@ const loadScript=(src)=> {
   });
 };
 
-const __DEV__ = document.domain === 'localhost'
+const __DEV__ = document.domain === 'https://foodstore-99700.web.app'
 
 const CartContainer = () => {
   const [{ cartShow, cartItems, user }, dispatch] = useStateValue();
