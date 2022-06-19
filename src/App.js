@@ -6,7 +6,8 @@ import { useStateValue } from "./context/StateProvider";
 import { getAllFoodItems } from "./utils/firebaseFunctions";
 import { actionType } from "./context/reducer";
 import About from "./components/About";
-
+import Errorpage from './components/Errorpage';
+import Shipping from "./components/Shipping";
 
 const App = () => {
   const [{ foodItems }, dispatch] = useStateValue();
@@ -26,15 +27,17 @@ const App = () => {
 
   return (
     <AnimatePresence exitBeforeEnter>
-      <div className="w-screen h-auto flex flex-col bg-primary">
+      <div className="w-screen h-auto flex flex-col bg-white">
         <Header />
 
         <main className="mt-14 md:mt-20 px-4 md:px-16 py-4 w-full">
           <Routes>
-            <Route path="/*" element={<MainContainer />} />
+            <Route path="/" element={<MainContainer />} />
+            <Route path="*" element={<Errorpage />} />
             <Route path="/createItem" element={<CreateContainer />} />
             <Route path="/service" element={<Service />} />
             <Route path="/about" element={<About />} />
+            <Route path="/shipping" element={<Shipping/>}/>
           </Routes>
         </main>
         

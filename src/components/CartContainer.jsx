@@ -8,6 +8,31 @@ import { actionType } from "../context/reducer";
 import EmptyCart from "../img/emptyCart.svg";
 import CartItem from "./CartItem";
 
+//import StripeCheckout from "react-stripe-checkout";
+//import axios from "axios";
+//import { toast } from "react-toastify";
+//import "react-toastify/dist/ReactToastify.css";
+
+//toast.configure();
+const loadScript=(src)=> {
+  return new Promise((resolve) => {
+    const script = document.createElement("script")
+    script.src = src;
+
+    script.onload = () => {
+      resolve(true)
+    };
+
+    script.onerror = () => {
+      resolve(false)
+    };
+
+    document.body.appendChild(script)
+  });
+};
+
+const __DEV__ = document.domain === 'localhost'
+
 const CartContainer = () => {
   const [{ cartShow, cartItems, user }, dispatch] = useStateValue();
   const [flag, setFlag] = useState(1);
@@ -25,7 +50,7 @@ const CartContainer = () => {
       return accumulator + item.qty * item.price;
     }, 0);
     setTot(totalPrice);
-    console.log(tot);
+    //console.log(tot);
   }, [tot, flag]);
 
   const clearCart = () => {
@@ -37,7 +62,69 @@ const CartContainer = () => {
     localStorage.setItem("cartItems", JSON.stringify([]));
   };
 
+
+  //charging payment
+  async function displayRazorpay(amount,id) {
+    const res = await loadScript('https://checkout.razorpay.com/v1/checkout.js');
+    if (!res) {
+      alert('Razorpay SDK failed to load. Are you online?')
+      return ;
+    }
+
+   // const data = await fetch('http://localhost:1337/razorpay', { method: 'POST' }).then((t) =>
+     // t.json()
+    //)
+
+    /*console.log(data)*/
+
+    const options = {
+      key: __DEV__ ? 'rzp_test_YW8OvjPi1RfWv7' : 'PRODUCTION_KEY',
+      currency:"INR",
+      amount: amount*100,
+     order_id: id,
+      name: 'Payment Section',
+      description: 'Thank you for ordering. Please hold some patience',
+      image: 'https://www.setindiabiz.com/wp-content/uploads/2022/05/payonline.png',
+
+      handler: function (response) {
+        alert(response.razorpay_payment_id)
+        alert("Payment Successfully")
+        //console.log(response.razorpay_order_id)
+        //alert(response.razorpay_order_id)
+        //alert(response.razorpay_signature)
+      },
+      prefill: {
+        name: "Test User",
+        email: 'mishuyashu23@gmail.com',
+        phone_number: '9262685542'
+      }
+    }
+    
+    /*const rzpl=new window.Razorpay(options);
+    document.getElementById('rzp-button').onclick=function(e){
+      rzpl.open();
+      e.preventDefault();
+    }
+
+    rzpl.on('payment.failed',function (response){
+      alert(response.error.code);     
+      alert(response.error.description);      
+      alert(response.error.source);
+      alert(response.error.step);     
+      alert(response.error.reason);
+      alert(response.error.metadata.order_id);
+      alert(response.error.metadata.payment_id);
+    });*/
+   
+    const paymentObject = new window.Razorpay(options)
+    paymentObject.open();
+
+  }
+
   return (
+
+
+
     <motion.div
       initial={{ opacity: 0, x: 200 }}
       animate={{ opacity: 1, x: 0 }}
@@ -73,6 +160,7 @@ const CartContainer = () => {
                   item={item}
                   setFlag={setFlag}
                   flag={flag}
+                  
                 />
               ))}
           </div>
@@ -81,11 +169,11 @@ const CartContainer = () => {
           <div className="w-full flex-1 bg-cartTotal rounded-t-[2rem] flex flex-col items-center justify-evenly px-8 py-2">
             <div className="w-full flex items-center justify-between">
               <p className="text-gray-400 text-lg">Sub Total</p>
-              <p className="text-gray-400 text-lg">$ {tot}</p>
+              <p className="text-gray-400 text-lg">₹ {tot}</p>
             </div>
             <div className="w-full flex items-center justify-between">
               <p className="text-gray-400 text-lg">Delivery</p>
-              <p className="text-gray-400 text-lg">$ 2.5</p>
+              <p className="text-gray-400 text-lg">₹ 2.5</p>
             </div>
 
             <div className="w-full border-b border-gray-600 my-2"></div>
@@ -93,14 +181,17 @@ const CartContainer = () => {
             <div className="w-full flex items-center justify-between">
               <p className="text-gray-200 text-xl font-semibold">Total</p>
               <p className="text-gray-200 text-xl font-semibold">
-                ${tot + 2.5}
+              ₹{tot + 2.5} 
               </p>
             </div>
+      
 
             {user ? (
               <motion.button
                 whileTap={{ scale: 0.8 }}
                 type="button"
+                
+                onClick={()=>displayRazorpay(tot+2.5, cartItems.id)}
                 className="w-full p-2 rounded-full bg-gradient-to-tr from-orange-400 to-orange-600 text-gray-50 text-lg my-2 hover:shadow-lg"
               >
                 Check Out
