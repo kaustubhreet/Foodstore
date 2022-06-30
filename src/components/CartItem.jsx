@@ -34,6 +34,7 @@ const CartItem = ({ item, setFlag, flag }) => {
         items = cartItems.filter((item) => item.id !== id);
         setFlag(flag + 1);
         cartDispatch();
+        
       } else {
         setQty(qty - 1);
         cartItems.map((item) => {
@@ -65,6 +66,7 @@ const CartItem = ({ item, setFlag, flag }) => {
         <p className="text-sm block text-gray-300 font-semibold">
         ₹ {parseFloat(item?.price) * qty}
         </p>
+        
       </div>
 
       {/* button section */}

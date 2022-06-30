@@ -7,6 +7,9 @@ import { getAllFoodItems } from "./utils/firebaseFunctions";
 import { actionType } from "./context/reducer";
 import About from "./components/About";
 import Errorpage from './components/Errorpage';
+import Contact from "./components/Contact";
+import Product from "./components/Product";
+import ShippingAddress from "./components/ShippingAddress";
 
 const App = () => {
   const [{ foodItems }, dispatch] = useStateValue();
@@ -34,8 +37,10 @@ const App = () => {
             <Route path="/" element={<MainContainer />} />
             <Route path="*" element={<Errorpage />} />
             <Route path="/createItem" element={<CreateContainer />} />
-            <Route path="/service" element={<Service />} />
+            <Route path="/contact" element={<Contact />} />
             <Route path="/about" element={<About />} />
+            <Route path="/product" element={<Product/>}/>
+            <Route path="/shipping" element={<ShippingAddress/>}/>
           </Routes>
         </main>
         

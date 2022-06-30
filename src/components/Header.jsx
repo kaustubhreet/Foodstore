@@ -71,13 +71,13 @@ const Header = () => {
               <Link to="/"> Home</Link>
             </li>
             <li className="text-lg text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">
-              Menu
+              <Link to="/product">Product</Link>
             </li>
             <li className="text-lg text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">
               <Link to="/about"> About Us</Link>
             </li>
             <li className="text-lg text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">
-              <Link to="/service">Service</Link>
+              <Link to="/contact">Contact</Link>
             </li>
           </motion.ul>
 
@@ -89,7 +89,7 @@ const Header = () => {
             {cartItems && cartItems.length > 0 && (
               <div className=" absolute -top-2 -right-2 w-5 h-5 rounded-full bg-cartNumBg flex items-center justify-center">
                 <p className="text-xs text-white font-semibold">
-                  {cartItems.length}
+                  {cartItems.length} 
                 </p>
               </div>
             )}
@@ -103,6 +103,7 @@ const Header = () => {
               alt="userprofile"
               onClick={login}
             />
+
             {isMenu && (
               <motion.div
                 initial={{ opacity: 0, scale: 0.6 }}

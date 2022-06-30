@@ -13,7 +13,7 @@ function Footer() {
                 <li><a href="https://www.instagram.com/delhi_foodies_dhaba/"><i className="fa fa-instagram"></i></a></li>
                 <li><a href="#"><i className="fa fa-google"></i></a></li>
                 <li><a href="#"><i className="fa fa-youtube"></i></a></li>
-                <li><a href="#"><i className="fa fa-linkedin"></i></a></li>
+                <li><a href="https://www.linkedin.com/in/kaustubh-reet-8679b1191/"><i className="fa fa-linkedin"></i></a></li>
             </ul>
         </div>
         <div className="footer-bottom">

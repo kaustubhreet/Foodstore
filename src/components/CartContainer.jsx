@@ -1,37 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { MdOutlineKeyboardBackspace } from "react-icons/md";
 import { RiRefreshFill } from "react-icons/ri";
-
 import { motion } from "framer-motion";
 import { useStateValue } from "../context/StateProvider";
 import { actionType } from "../context/reducer";
 import EmptyCart from "../img/emptyCart.svg";
 import CartItem from "./CartItem";
+import { Link } from "react-router-dom";
 
-//import StripeCheckout from "react-stripe-checkout";
-//import axios from "axios";
-//import { toast } from "react-toastify";
-//import "react-toastify/dist/ReactToastify.css";
 
-//toast.configure();
-const loadScript=(src)=> {
-  return new Promise((resolve) => {
-    const script = document.createElement("script")
-    script.src = src;
 
-    script.onload = () => {
-      resolve(true)
-    };
-
-    script.onerror = () => {
-      resolve(false)
-    };
-
-    document.body.appendChild(script)
-  });
-};
-
-const __DEV__ = document.domain === 'https://foodstore-99700.web.app'
 
 const CartContainer = () => {
   const [{ cartShow, cartItems, user }, dispatch] = useStateValue();
@@ -62,44 +40,8 @@ const CartContainer = () => {
     localStorage.setItem("cartItems", JSON.stringify([]));
   };
 
-
-  //charging payment
-  async function displayRazorpay(amount,id) {
-    const res = await loadScript('https://checkout.razorpay.com/v1/checkout.js');
-    if (!res) {
-      alert('Razorpay SDK failed to load. Are you online?')
-      return ;
-    }
-
-   // const data = await fetch('http://localhost:1337/razorpay', { method: 'POST' }).then((t) =>
-     // t.json()
-    //)
-
-    /*console.log(data)*/
-
-    const options = {
-      key: __DEV__ ? 'rzp_test_YW8OvjPi1RfWv7' : 'PRODUCTION_KEY',
-      currency:"INR",
-      amount: amount*100,
-     order_id: id,
-      name: 'Payment Section',
-      description: 'Thank you for ordering. Please hold some patience',
-      image: 'https://www.setindiabiz.com/wp-content/uploads/2022/05/payonline.png',
-
-      handler: function (response) {
-        alert(response.razorpay_payment_id)
-        alert("Payment Successfully")
-        //console.log(response.razorpay_order_id)
-        //alert(response.razorpay_order_id)
-        //alert(response.razorpay_signature)
-      },
-      prefill: {
-        name: "Test User",
-        email: 'mishuyashu23@gmail.com',
-        phone_number: '9262685542'
-      }
-    }
-    
+//const finalAmount=amount*100;
+  
     /*const rzpl=new window.Razorpay(options);
     document.getElementById('rzp-button').onclick=function(e){
       rzpl.open();
@@ -116,15 +58,11 @@ const CartContainer = () => {
       alert(response.error.metadata.payment_id);
     });*/
    
-    const paymentObject = new window.Razorpay(options)
-    paymentObject.open();
+    
 
-  }
-
+  
   return (
-
-
-
+    <>
     <motion.div
       initial={{ opacity: 0, x: 200 }}
       animate={{ opacity: 1, x: 0 }}
@@ -173,7 +111,7 @@ const CartContainer = () => {
             </div>
             <div className="w-full flex items-center justify-between">
               <p className="text-gray-400 text-lg">Delivery</p>
-              <p className="text-gray-400 text-lg">₹ 2.5</p>
+              <p className="text-gray-400 text-lg">₹ 2.5 </p>
             </div>
 
             <div className="w-full border-b border-gray-600 my-2"></div>
@@ -187,15 +125,16 @@ const CartContainer = () => {
       
 
             {user ? (
+              
               <motion.button
                 whileTap={{ scale: 0.8 }}
                 type="button"
-                
-                onClick={()=>displayRazorpay(tot+2.5, cartItems.id)}
                 className="w-full p-2 rounded-full bg-gradient-to-tr from-orange-400 to-orange-600 text-gray-50 text-lg my-2 hover:shadow-lg"
               >
-                Check Out
+                <Link to="/shipping"> Check Out </Link>
+               
               </motion.button>
+              
             ) : (
               <motion.button
                 whileTap={{ scale: 0.8 }}
@@ -216,6 +155,7 @@ const CartContainer = () => {
         </div>
       )}
     </motion.div>
+    </>
   );
 };
 
