@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-
+import { contact } from "../utils/firebaseFunctions";
 
 const Contact = () => {
   const [userData, setUserData] = useState({
@@ -17,13 +17,15 @@ const Contact = () => {
     setUserData({ ...userData, [name]: value });
   };
 
+
   // connect with firebase
   const submitData = async (event) => {
     event.preventDefault();
     const { firstName,phone, email, message } = userData;
 
     if (firstName && phone && email && message) {
-      const res = fetch(
+      // for real time database
+      /*const res = fetch(
         "https://foodstore-99700-default-rtdb.firebaseio.com/contact.json",
         {
           method: "POST",
@@ -36,8 +38,16 @@ const Contact = () => {
             email,
             message,
           }),
+
         }
-      );
+      );*/
+      const res={
+        firstName,
+            phone,
+            email,
+            message,
+      }
+      contact(res);
 
       if (res) {
         setUserData({

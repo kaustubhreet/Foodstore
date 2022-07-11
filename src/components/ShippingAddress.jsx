@@ -3,7 +3,7 @@ import React,{useState,useEffect} from 'react'
   import { actionType } from "../context/reducer";
   import { useStateValue } from "../context/StateProvider";
   import { motion } from "framer-motion";
-  import { collection, getDocs } from "firebase/firestore";
+  //import { collection, getDocs } from "firebase/firestore";
   import { firestore, storage } from "../firebase.config";
 
   const loadScript=(src)=> {
@@ -49,10 +49,6 @@ const [gid,setGid]=useState("");
 
       
       //for database access
-      
-     
-      
-
       const amount=(tot+2.5);
       
     const saveDetails = (event) => {

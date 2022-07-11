@@ -22,15 +22,20 @@ export const saveAddress = async (data) => {
   });
 };
 
+// saving new contact
+export const contact = async (data) => {
+  await setDoc(doc(firestore, "contact", `${Date.now()}`), data, {
+    merge: true,
+  });
+};
+
 //get new address
 export const getAddress = async () => {
   const items = await getDocs(
     query(collection(firestore, "shipping"), orderBy("id", "desc"))
   );
-
   return items.docs.map((doc) => doc.data());
 };
-
 
 // getall food items
 export const getAllFoodItems = async () => {

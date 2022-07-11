@@ -89,7 +89,7 @@ export const usePayment = () => {
         payload: { cart: res.data.cart },
       });
       setLoader(false);
-      navigate("/profile/orders");
+      navigate("/");
     } catch (err) {
       console.error(err);
     }
