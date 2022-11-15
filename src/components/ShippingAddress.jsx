@@ -37,8 +37,12 @@ const ShippingAddress = () => {
        const [alertStatus, setAlertStatus] = useState("danger");
        const [{ shipping ,cartItems}, dispatch] = useStateValue();
        const [tot, setTot] = useState(0);
-const [gid,setGid]=useState("");
        
+var currentdate = new Date(); 
+const datetime=currentdate.getDate()+"#"+currentdate.getDay()+"@"+currentdate.getHours()+currentdate.getMinutes();
+
+const [gid,setGid]=useState(datetime);
+      
        useEffect(() => {
         let totalPrice = cartItems.reduce(function (accumulator, item) {
           return accumulator + item.qty * item.price;
@@ -75,6 +79,7 @@ const [gid,setGid]=useState("");
               firstName: firstName,
               email: email,
               phone: phone,
+              id:datetime,
               address: address,
             };
             
@@ -82,7 +87,7 @@ const [gid,setGid]=useState("");
             setFields(true);
             setMsg("Data Uploaded successfully 😊");
             setAlertStatus("success");
-            displayRazorpay(amount,gid,firstName,email,phone,address);
+            displayRazorpay(amount,datetime,firstName,email,phone,address);
             setTimeout(() => {
               setFields(false);
             }, 4000);

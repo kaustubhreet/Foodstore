@@ -3,6 +3,7 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
+  
   apiKey: "AIzaSyBWjK-ZhrpLy-UeQQ91nuBxaSH2m5p5_rU",
   authDomain: "foodstore-99700.firebaseapp.com",
   databaseURL:"https://foodstore-99700-default-rtdb.firebaseio.com",
@@ -16,6 +17,7 @@ const app = getApps.length > 0 ? getApp() : initializeApp(firebaseConfig);
 
 const firestore = getFirestore(app);
 const storage = getStorage(app);
+
 
 
         
