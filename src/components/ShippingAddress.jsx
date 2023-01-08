@@ -45,10 +45,12 @@ const [gid,setGid]=useState(datetime);
       
        useEffect(() => {
         let totalPrice = cartItems.reduce(function (accumulator, item) {
+          setGid(item.id);
           return accumulator + item.qty * item.price;
         }, 0);
         setTot(totalPrice);
-        //console.log(tot);
+        
+        //console.log(tot); 
       }, [tot, flag]);
 
       
@@ -64,12 +66,14 @@ const [gid,setGid]=useState(datetime);
             setAlertStatus("danger");
             setTimeout(() => {
               setFields(false);
-              const citiesRef = firestore.collection('shipping');
-              const snapshot = citiesRef.get();
-              snapshot.forEach(doc => {
-                console.log(doc.id, '=>', doc.data());
-                setGid(doc.id);  
-              });
+              
+              //const citiesRef = firestore.collection('shipping');
+              //const snapshot = citiesRef.get();
+              //snapshot.forEach((doc) => {
+                //console.log(doc.id, '=>', doc.data());
+                console.log(gid);//for checking id of product
+                //setGid(doc.id);  
+              //});
 
 
             }, 4000);

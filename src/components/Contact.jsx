@@ -1,6 +1,7 @@
 import React,{useState} from 'react';
 import { contact } from "../utils/firebaseFunctions";
 
+ 
 const Contact = () => {
   const [userData, setUserData] = useState({
     firstName: "",
@@ -64,6 +65,9 @@ const Contact = () => {
       alert("plz fill the data !!!");
     }
   };
+
+  
+
 
   return (
    <>
@@ -184,7 +188,6 @@ const Contact = () => {
     </form>
   </div>
 </div>
-
 
    </>
   )

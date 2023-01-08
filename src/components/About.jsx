@@ -16,6 +16,10 @@ function About() {
 
 The course usually consists of sweet foods and beverages, such as dessert wine or liqueurs, but may include coffee, cheeses, nuts, or other savory items. In some parts of the world, such as much of central and western Africa, there is no tradition of a dessert course to conclude a meal.
         </p>
+        <p>
+        It seems that the current situation with the coronavirus pandemic has had a significant impact on the restaurant industry. As the pandemic continues, restaurants are having to adapt and reevaluate their strategies in order to survive. People are still hesitant to eat out and are looking for ways to have food delivered to their homes, which has led to an increase in demand for contactless ordering and delivery. Many restaurants have adopted this method as a way to continue operating during the crisis, and it is becoming more common. Some people are even willing to pay a premium price for delivery services in order to avoid having to leave their homes. It is possible that contactless ordering and delivery will 
+        continue to be popular even after the pandemic subsides, as it offers convenience and safety for both restaurants and customers.
+        </p>
          </div>
 
          <div className='w-full flex pt-4 pb-4 items-center justify-center px-1 col-auto '>
