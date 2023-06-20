@@ -4,7 +4,7 @@ import React,{useState,useEffect} from 'react'
   import { useStateValue } from "../context/StateProvider";
   import { motion } from "framer-motion";
   //import { collection, getDocs } from "firebase/firestore";
-  import { firestore, storage } from "../firebase.config";
+  //import { firestore, storage } from "../firebase.config";
 
   const loadScript=(src)=> {
     return new Promise((resolve) => {
