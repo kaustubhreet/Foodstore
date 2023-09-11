@@ -1,6 +1,6 @@
 import React from 'react'
 import "./footer.css";
-import BotFunction from "./BotFunction";
+import BotFunction from "./Bot";
 
 function Footer() {
     return (

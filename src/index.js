@@ -8,14 +8,14 @@ import App from "./App";
 import { StateProvider } from "./context/StateProvider";
 import { initialState } from "./context/initalState";
 import reducer from "./context/reducer";
-import Bot from "./components/Bot";
+
 
 ReactDOM.render(
   <Router>
     <StateProvider initialState={initialState} reducer={reducer}>
-      <Bot>
+     
       <App />
-      </Bot>
+      
 
     </StateProvider>
   </Router>,

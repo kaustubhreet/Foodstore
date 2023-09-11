@@ -35,11 +35,14 @@ const ShippingAddress = () => {
        const [fields, setFields] = useState(false); 
        const [msg, setMsg] = useState(null);
        const [alertStatus, setAlertStatus] = useState("danger");
-       const [{ shipping ,cartItems}, dispatch] = useStateValue();
+       const [{ cartItems}, dispatch] = useStateValue();
        const [tot, setTot] = useState(0);
        
-var currentdate = new Date(); 
-const datetime=currentdate.getDate()+"#"+currentdate.getDay()+"@"+currentdate.getHours()+currentdate.getMinutes();
+       //console.log(shipping);
+
+//var currentdate = new Date(); 
+const datetime="1693236390273";
+//currentdate.getDate()+"#"+currentdate.getDay()+"@"+currentdate.getHours()+currentdate.getMinutes();
 
 const [gid,setGid]=useState(datetime);
       
@@ -83,7 +86,7 @@ const [gid,setGid]=useState(datetime);
               firstName: firstName,
               email: email,
               phone: phone,
-              id:datetime,
+              id:"1693236390273",
               address: address,
             };
             
@@ -158,7 +161,7 @@ const [gid,setGid]=useState(datetime);
       order_id: gid,
       name: 'Payment Section',
       description: 'Thank you for ordering. Please hold some patience',
-      image: 'https://www.setindiabiz.com/wp-content/uploads/2022/05/payonline.png',
+      image: 'https://www.financialexpress.com/wp-content/uploads/2023/06/Rupee-1-1.jpg?w=350',
 
       handler: function (response) {
         alert(response.razorpay_payment_id)
