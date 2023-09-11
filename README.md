@@ -1,3 +1,19 @@
+![image](https://github.com/kaustubhreet/Foodstore/assets/77569949/d601f149-96a3-41f9-8339-4576812a0fb5)
+
+![image](https://github.com/kaustubhreet/Foodstore/assets/77569949/eae7d9d0-ce50-46a0-b84f-527e86646e68)
+
+About Us 
+![image](https://github.com/kaustubhreet/Foodstore/assets/77569949/102b566b-659c-4c26-bae2-cb45b00b9259)
+
+![image](https://github.com/kaustubhreet/Foodstore/assets/77569949/22bcb564-bce1-4c08-b83e-0c0544657e20)
+
+Contact 
+![image](https://github.com/kaustubhreet/Foodstore/assets/77569949/23b73295-89c0-4458-9882-bf7dd8571941)
+
+Add Product By Admin
+![image](https://github.com/kaustubhreet/Foodstore/assets/77569949/bd10b94f-a581-4c39-9552-bcd519966751)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
